@@ -9,42 +9,32 @@ import "./Header.css";
 interface TokenPayload {
   id: string;
   email: string;
+  role: string;
   exp: number;
 }
 
 export default function Header() {
   const router = useRouter();
-  const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [user, setUser] = useState<{ email: string; role: string } | null>(null);
 
-  // Función para leer token desde localStorage
-  const checkToken = () => {
+  useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       try {
         const decoded = jwtDecode<TokenPayload>(token);
-        setUserEmail(decoded.email);
+        setUser({ email: decoded.email, role: decoded.role });
       } catch (err) {
         console.error("Token inválido:", err);
         localStorage.removeItem("token");
-        setUserEmail(null);
+        setUser(null);
       }
-    } else {
-      setUserEmail(null);
     }
-  };
-
-  // Revisar token al montar el componente
-  useEffect(() => {
-    checkToken();
-    // Escuchar cambios en localStorage (por login/logout en otra pestaña)
-    window.addEventListener("storage", checkToken);
-    return () => window.removeEventListener("storage", checkToken);
   }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    setUserEmail(null);
-    router.push("/user/login");
+    setUser(null);
+    router.push("/");
   };
 
   return (
@@ -71,14 +61,16 @@ export default function Header() {
       <nav aria-label="Navegación principal" className="header-nav">
         <Link href="/" className="header-nav-link">Inicio</Link>
 
-        {!userEmail ? (
+        {!user ? (
           <>
             <Link href="/user/login" className="header-nav-link">Login</Link>
             <Link href="/user/register" className="header-nav-link">Registro</Link>
           </>
         ) : (
           <>
-            <span className="header-nav-link greeting">Hola, {userEmail}</span>
+            <span className="header-nav-link greeting">
+              Hola, {user.email} ({user.role})
+            </span>
             <button onClick={handleLogout} className="header-nav-link logout-button">
               Cerrar sesión
             </button>

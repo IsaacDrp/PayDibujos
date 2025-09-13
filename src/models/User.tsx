@@ -1,9 +1,11 @@
 import mongoose, { Schema, Document, Model } from "mongoose";
 
+// Agregamos role al interface
 export interface IUser extends Document {
   username: string;
   email: string;
   password: string;
+  role: string;           // <- Nuevo campo
   createdAt: Date;
   updatedAt: Date;
 }
@@ -13,6 +15,7 @@ const UserSchema: Schema<IUser> = new Schema(
     username: { type: String, required: true, unique: true },
     email:    { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    role:     { type: String, default: "user" }, // <- rol por defecto
   },
   { timestamps: true }
 );

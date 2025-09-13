@@ -39,25 +39,27 @@ export default function Login() {
   };
 
   return (
-    <main className="container">
-      <h1 className="title">Iniciar Sesión</h1>
-      <form onSubmit={handleSubmit} className="form">
-        <input
-          type="email"
-          name="email"
-          placeholder="Correo electrónico"
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Contraseña"
-          onChange={handleChange}
-          required
-        />
-        <button type="submit">Entrar</button>
-      </form>
+    <main className="login-container">
+      <div className="login-content">
+        <h1 className="login-title">Iniciar Sesión</h1>
+        <form onSubmit={handleSubmit} className="login-form">
+          <input
+            type="email"
+            name="email"
+            placeholder="Correo electrónico"
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Contraseña"
+            onChange={handleChange}
+            required
+          />
+          <button type="submit">Entrar</button>
+        </form>
+      </div>
     </main>
   );
 }

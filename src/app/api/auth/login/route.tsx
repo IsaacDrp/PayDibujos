@@ -33,14 +33,16 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Generar JWT
     const token = jwt.sign(
-      { id: user._id, email: user.email },
+      { id: user._id, email: user.email, role: user.role },
       process.env.JWT_SECRET as string,
       { expiresIn: "1d" }
     );
 
-    return NextResponse.json({ message: "Login exitoso", token }, { status: 200 });
+    return NextResponse.json(
+      { message: "Login exitoso", token, user: { email: user.email, role: user.role } },
+      { status: 200 }
+    );
   } catch (error: any) {
     console.error("ERROR en login:", error);
     return NextResponse.json(

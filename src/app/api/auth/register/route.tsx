@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
   try {
     await connectDB();
 
-    const { username, email, password } = await req.json();
+    const { username, email, password, role } = await req.json();
 
     if (!username || !email || !password) {
       return NextResponse.json(
@@ -16,10 +16,10 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Validar duplicados en username o email
     const userExists = await User.findOne({
       $or: [{ username }, { email }],
     });
+
     if (userExists) {
       return NextResponse.json(
         { message: "Nombre de usuario o correo ya registrado" },
@@ -33,10 +33,11 @@ export async function POST(req: NextRequest) {
       username,
       email,
       password: hashedPassword,
+      role: role || "user", // Default si no se envía
     });
 
     return NextResponse.json(
-      { message: "Usuario creado", user: { id: user._id, username, email } },
+      { message: "Usuario creado", user: { id: user._id, username, email, role: user.role } },
       { status: 201 }
     );
   } catch (error: any) {
