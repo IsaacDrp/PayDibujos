@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables CSS básicas */
+:root {
+  --blue-main: #1046DA;
+  --blue-mid: #3E7FB2;
+  --cyan-soft: #62C6DB;
+  --yellow-pastel: #F9E06E;
+  --coral: #FA6C7C;
+  --purple-soft: #A78BFA;
+  --pink-soft: #F9A8D4;
+  --green-soft: #86EFAC;
+}
