@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Variables CSS básicas */
+
 :root {
   --blue-main: #1046DA;
   --blue-mid: #3E7FB2;
