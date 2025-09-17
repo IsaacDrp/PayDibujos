@@ -4,7 +4,7 @@
   background: linear-gradient(
     135deg,
     var(--white) 0%,
-    var(--blue-soft) 50%,
+    var(--blue-soft, #BFDBFE) 50%,
     var(--cyan-soft) 100%
   );
 }
@@ -12,7 +12,7 @@
 .admin-title {
   font-size: 2rem;
   font-weight: 800;
-  background: linear-gradient(to right, var(--blue-main), var(--cyan-main));
+  background: linear-gradient(to right, var(--blue-main), var(--cyan-main, #06B6D4));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -38,13 +38,13 @@
 }
 
 .search-input:focus {
-  border-color: var(--cyan-main);
+  border-color: var(--cyan-main, #06B6D4);
   box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.3);
 }
 
 .search-button {
   padding: 0.75rem 1.5rem;
-  background: linear-gradient(to right, var(--blue-dark), var(--cyan-main));
+  background: linear-gradient(to right, var(--blue-dark, #1E3A8A), var(--cyan-main, #06B6D4));
   color: white;
   font-weight: 600;
   border-radius: 9999px;
@@ -69,8 +69,8 @@
 }
 
 .user-table th {
-  background: linear-gradient(to right, var(--blue-main), var(--cyan-main));
-  color: white;
+  background: linear-gradient(to right, var(--blue-main), var(--cyan-main, #06B6D4));
+  color: var(--white);
   padding: 1rem;
   text-align: left;
   font-size: 1rem;
@@ -78,18 +78,18 @@
 
 .user-table td {
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--gray-light, #E5E7EB);
   font-size: 0.95rem;
-  color: var(--gray-dark);
+  color: var(--gray-dark, #374151);
 }
 
 .user-table tr:hover {
-  background-color: #f9fafb;
+  background-color: var(--blue-soft, #BFDBFE);
 }
 
 .no-results {
   text-align: center;
   font-size: 1.125rem;
-  color: var(--gray-medium);
+  color: var(--gray-medium, #9CA3AF);
   margin-top: 2rem;
 }
