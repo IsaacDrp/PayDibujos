@@ -68,6 +68,10 @@ export default function Header() {
           </>
         ) : (
           <>
+            {user.role === "admin" && (
+              <Link href="/admin" className="header-nav-link">Panel</Link>
+            )}
+
             <span className="header-nav-link greeting">
               Hola, {user.email} ({user.role})
             </span>
