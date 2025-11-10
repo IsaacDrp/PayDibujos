@@ -1,0 +1,117 @@
+/* 1. ANFITRIÓN DEL COMPONENTE (Arregla el <br>) */
+:host {
+  display: block;
+  /* ¡CRÍTICO! Ajusta este valor a la altura
+     real de tu header (ej. 120px, 140px, etc.) */
+  padding-top: 140px; 
+}
+
+
+/* ============================================== */
+/* 2. ESTILOS DEL HERO (LA DANZA)                 */
+/* ============================================== */
+.art-block:first-child {
+  position: relative; 
+  padding: 0;
+}
+
+.art-block:first-child .art-block-image {
+  max-height: 700px; 
+  width: 100%;
+}
+
+.art-block:first-child .art-block-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.art-block:first-child .art-block-content {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 5rem; /* Alineado a la derecha */
+  left: auto;
+
+  /* Estilo de caja transparente */
+  background-color: rgba(26, 26, 26, 0.75); 
+  padding: 2rem;
+  border-radius: 8px;
+  
+  width: 90%; 
+  max-width: 500px; 
+  box-sizing: border-box;
+  text-align: left; /* Texto alineado a la izquierda */
+}
+
+/* Colores claros para el texto del Hero */
+.art-block:first-child .artist-name {
+  color: #fcfcfc; 
+}
+
+.art-block:first-child .artist-specialty {
+  color: #f0f0f0; 
+  margin-bottom: 0;
+}
+
+
+/* ============================================== */
+/* 3. ESTILOS DEL BLOQUE DE GRADIENTE (INTRO)     */
+/* ============================================== */
+.content-block {
+  /* ¡MODIFICADO! */
+  padding: 6rem 2rem; /* Mantiene el padding vertical */
+  text-align: center;
+  background: linear-gradient(to bottom, #4a3a6a, #f5eecf);
+}
+
+/* 2. EL TEXTO (CENTRADO Y LEGIBLE) */
+.content-wrapper {
+  max-width: 700px; /* Aquí vuelve el max-width */
+  margin: 0 auto; /* Centra el contenido de texto */
+}
+
+/* Colores claros para el texto del gradiente */
+.content-block .art-title {
+  color: #ff69b4; /* Rosa de la paleta */
+  font-size: 2.25rem;
+  font-weight: bold;
+}
+
+.content-block .art-description {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  margin-top: 1rem;
+  color: #f0f0f0; /* Texto claro */
+}
+
+.content-block .art-cta-link {
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  color: #f0f0f0; /* Enlace claro */
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.content-block .art-cta-link:hover {
+  color: #ff69b4;
+  border-bottom-color: #ff69b4;
+}
+
+
+/* ============================================== */
+/* 4. ESTILOS DEL BLOQUE DE IMAGEN (CORALINA)     */
+/* ============================================== */
+.image-block {
+  width: 100%;
+  max-height: 800px; 
+}
+
+.image-block img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}

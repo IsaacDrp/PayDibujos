@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* 1. Tu instrucción clave: fondo predominantemente blanco */
+  background-color: #fcfcfc; /* Un blanco ligeramente "roto", no tan puro */
+  
+  /* 2. Usamos el color más oscuro de tu paleta para el texto */
+  color: #1a1a1a; /* (Ajusta este hexadecimal al negro exacto de tu paleta) */
+
+  /* 3. Una tipografía base limpia */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
+               Helvetica, Arial, sans-serif;
+}
+
+/* Para que las imágenes se comporten bien por defecto */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}

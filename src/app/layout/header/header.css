@@ -1,0 +1,85 @@
+/* src/app/layout/header/header.css */
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  
+  /* 1. ALINEACIÓN "ARRIBA" */
+  /* Cambiamos 'center' por 'flex-start' */
+  align-items: flex-start; 
+  
+  /* Añadimos padding arriba y abajo para que no se pegue */
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem; 
+
+  /* Esto es clave para que el padding funcione con min-height */
+  box-sizing: border-box; 
+  
+  min-height: 120px; /* Mantenemos la altura */
+
+  /* ... (El resto: background-image, position, width, etc.) ... */
+  background-image: url('/assets/images/header-bg.png');
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 2px solid #000;
+}
+
+/* 2. ESTILOS DEL NUEVO LOGO CON TÍTULO */
+.logo-group {
+  display: flex;
+  /* Alineamos los elementos al fondo */
+  align-items: flex-end; 
+  gap: 0.5rem; /* Espacio entre la imagen y el texto */
+  text-decoration: none; /* Por si lo quieres hacer un link */
+}
+
+.logo-image {
+  height: 110px; /* O el tamaño que tenías */
+}
+
+.logo-title {
+  font-size: 3.25rem;
+  font-weight: bold;
+  color: #fcfcfc; /* Texto blanco */
+  
+  /* Sombra un poco más grande y difuminada para más legibilidad */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+
+  /* Pequeño ajuste para que se alinee bien con la base de la imagen */
+  padding-bottom: 5px; 
+}
+
+
+/* ... (Estilos de .main-nav y .main-nav ul) ... */
+.main-nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+.main-nav li {
+  margin-left: 1.5rem;
+}
+
+
+/* 3. CAMBIO DE HOVER */
+.main-nav a {
+  color: #fcfcfc; /* Color base blanco */
+  text-decoration: none;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.main-nav a:hover {
+  color: #ffffff; /* ¡Hover blanco! */
+  /* Hacemos el hover un poco más brillante quitando la sombra */
+  text-shadow: none; 
+}
