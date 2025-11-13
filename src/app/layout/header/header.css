@@ -5,7 +5,6 @@
   justify-content: space-between;
   
   /* 1. ALINEACIÓN "ARRIBA" */
-  /* Cambiamos 'center' por 'flex-start' */
   align-items: flex-start; 
   
   /* Añadimos padding arriba y abajo para que no se pegue */
@@ -17,18 +16,16 @@
   /* Esto es clave para que el padding funcione con min-height */
   box-sizing: border-box; 
   
-  min-height: 120px; /* Mantenemos la altura */
+  min-height: 100px; 
+  background-image: linear-gradient(to bottom, #20409E, transparent);
+  
+  /* === FIN DE CAMBIOS === */
 
-  /* ... (El resto: background-image, position, width, etc.) ... */
-  background-image: url('/assets/images/header-bg.png');
-  background-size: cover;
-  background-position: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  border-bottom: 2px solid #000;
 }
 
 /* 2. ESTILOS DEL NUEVO LOGO CON TÍTULO */
@@ -42,17 +39,13 @@
 
 .logo-image {
   height: 110px; /* O el tamaño que tenías */
+  border-radius: 2.5rem;
 }
 
 .logo-title {
   font-size: 3.25rem;
   font-weight: bold;
-  color: #fcfcfc; /* Texto blanco */
-  
-  /* Sombra un poco más grande y difuminada para más legibilidad */
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
-
-  /* Pequeño ajuste para que se alinee bien con la base de la imagen */
+  color: #fcfcfc; 
   padding-bottom: 5px; 
 }
 
@@ -74,12 +67,9 @@
   color: #fcfcfc; /* Color base blanco */
   text-decoration: none;
   font-weight: bold;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-  transition: color 0.3s ease, text-shadow 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .main-nav a:hover {
-  color: #ffffff; /* ¡Hover blanco! */
-  /* Hacemos el hover un poco más brillante quitando la sombra */
-  text-shadow: none; 
+  color: #ffffff;
 }

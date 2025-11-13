@@ -1,117 +1,215 @@
-/* 1. ANFITRIÓN DEL COMPONENTE (Arregla el <br>) */
+/* src/app/pages/home/home.css */
+
+/* ============================================== */
+/* 1. ANFITRIÓN DEL COMPONENTE                   */
+/* ============================================== */
 :host {
   display: block;
-  /* ¡CRÍTICO! Ajusta este valor a la altura
-     real de tu header (ej. 120px, 140px, etc.) */
-  padding-top: 140px; 
+  /* Espacio para el header fijo */
+  background-color: #fcfcfc; /* Fondo base limpio */
+  overflow-x: hidden; /* Evita scroll horizontal */
 }
 
 
 /* ============================================== */
-/* 2. ESTILOS DEL HERO (LA DANZA)                 */
+/* 2. ESTILOS DEL HERO PRINCIPAL (LA DANZA)       */
 /* ============================================== */
-.art-block:first-child {
-  position: relative; 
-  padding: 0;
-}
-
-.art-block:first-child .art-block-image {
-  max-height: 700px; 
+.art-block {
+  position: relative; /* Ancla para la tarjeta */
   width: 100%;
+  height: 100vh; /* Ocupa el 85% de la altura de la ventana */
+  min-height: 600px;
 }
 
-.art-block:first-child .art-block-image img {
+.art-block-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  border-radius: 0;
-  box-shadow: none;
 }
 
-.art-block:first-child .art-block-content {
+.art-block-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Rellena el espacio sin deformarse */
+}
+
+/* LA TARJETA DE TRANSPARENCIA "GLASSMORPHISM" */
+.art-block-content {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  right: 5rem; /* Alineado a la derecha */
-  left: auto;
+  left: 70%;
+  transform: translate(-50%, -50%);
 
-  /* Estilo de caja transparente */
-  background-color: rgba(26, 26, 26, 0.75); 
-  padding: 2rem;
-  border-radius: 8px;
+  /* JUGAMOS CON LA TRANSPARENCIA */
+  /* Usamos el gris oscuro de tu paleta */
+  background-color: rgba(35, 37, 41, 0.8); 
+  backdrop-filter: blur(12px); /* Efecto "vidrio esmerilado" */
+  -webkit-backdrop-filter: blur(12px);
+
+  color: #fcfcfc;
+  padding: 2.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   
-  width: 90%; 
-  max-width: 500px; 
+  width: 90%;
+  max-width: 600px; /* Un poco más ancha */
   box-sizing: border-box;
-  text-align: left; /* Texto alineado a la izquierda */
-}
-
-/* Colores claros para el texto del Hero */
-.art-block:first-child .artist-name {
-  color: #fcfcfc; 
-}
-
-.art-block:first-child .artist-specialty {
-  color: #f0f0f0; 
-  margin-bottom: 0;
-}
-
-
-/* ============================================== */
-/* 3. ESTILOS DEL BLOQUE DE GRADIENTE (INTRO)     */
-/* ============================================== */
-.content-block {
-  /* ¡MODIFICADO! */
-  padding: 6rem 2rem; /* Mantiene el padding vertical */
   text-align: center;
-  background: linear-gradient(to bottom, #4a3a6a, #f5eecf);
 }
 
-/* 2. EL TEXTO (CENTRADO Y LEGIBLE) */
-.content-wrapper {
-  max-width: 700px; /* Aquí vuelve el max-width */
-  margin: 0 auto; /* Centra el contenido de texto */
+/* PROTAGONISMO DEL TEXTO */
+.artist-name {
+  font-size: 3.25rem; /* ¡Más grande! */
+  font-weight: 700;
+  margin: 0;
+  color: #fcfcfc;
 }
 
-/* Colores claros para el texto del gradiente */
-.content-block .art-title {
-  color: #ff69b4; /* Rosa de la paleta */
-  font-size: 2.25rem;
-  font-weight: bold;
+.artist-specialty {
+  font-size: 1.75rem; /* ¡Más grande! */
+  font-weight: 300; /* Más ligero */
+  color: #fcfcfc;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
-.content-block .art-description {
-  font-size: 1.2rem;
+.artist-bio {
+  font-size: 1.15rem; /* Más grande */
   line-height: 1.7;
-  margin-top: 1rem;
-  color: #f0f0f0; /* Texto claro */
+  color: #e0e0e0; /* Un gris claro, no blanco puro */
+  margin: 0;
 }
 
-.content-block .art-cta-link {
+
+/* ============================================== */
+/* 3. ESTILOS DE LA GALERÍA DINÁMICA              */
+/* ============================================== */
+.gallery-item {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  
+  /* Contenedor centrado */
+  max-width: 1100px;
+  margin: 6rem auto; /* Mucho espacio vertical entre items */
+  padding: 0 1rem;
+}
+
+/* Alterna la dirección de la fila */
+.gallery-item.reverse {
+  flex-direction: row-reverse;
+}
+
+.gallery-item-text,
+.gallery-item-image {
+  flex: 1; /* Ocupan 50% cada uno */
+}
+
+.gallery-item-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Tipografía de la galería */
+.gallery-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #20409E; /* Azul rey de tu paleta */
+}
+
+.gallery-description {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #333;
+  margin: 1.5rem 0;
+}
+
+.gallery-cta-link {
   display: inline-block;
   font-weight: bold;
   text-decoration: none;
+  color: #20409E;
+  border-bottom: 2px solid #20409E;
   transition: all 0.3s ease;
-  color: #f0f0f0; /* Enlace claro */
-  border-bottom: 2px solid #f0f0f0;
 }
 
-.content-block .art-cta-link:hover {
-  color: #ff69b4;
-  border-bottom-color: #ff69b4;
+.gallery-cta-link:hover {
+  color: #4778AA; /* Azul medio de tu paleta */
+  border-bottom-color: #4778AA;
 }
 
 
 /* ============================================== */
-/* 4. ESTILOS DEL BLOQUE DE IMAGEN (CORALINA)     */
+/* 4. BLOQUE TEASER (SOBRE MÍ)                    */
 /* ============================================== */
-.image-block {
-  width: 100%;
-  max-height: 800px; 
+/* (Usamos los estilos que ya te gustaban) */
+.teaser-block {
+  background: linear-gradient(to bottom, #f5eecf, #4a3a6a);
+  padding: 6rem 2rem;
+  margin-top: 6rem;
+  text-align: center;
 }
 
-.image-block img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
+.teaser-block .content-wrapper,
+.teaser-quote {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.teaser-quote {
+  font-size: 2.25rem; /* ¡Más grande! */
+  font-weight: bold;
+  font-style: italic;
+  color: #232529; /* Gris oscuro */
+  margin-bottom: 2.5rem;
+  line-height: 1.4;
+}
+
+.teaser-cta-link {
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background-color: #fcfcfc;
+  color: #20409E;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  border: 2px solid #20409E;
+}
+
+.teaser-cta-link:hover {
+  background-color: #20409E;
+  color: #fcfcfc;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+
+/* ============================================== */
+/* 5. RESPONSIVE (MÓVIL)                          */
+/* ============================================== */
+@media (max-width: 768px) {
+  /* Hero */
+  .art-block-content {
+    width: 90%;
+    padding: 1.5rem;
+  }
+  .artist-name { font-size: 2rem; }
+  .artist-specialty { font-size: 1.25rem; }
+  .artist-bio { font-size: 1rem; }
+
+  /* Galería (aquí está la magia vertical) */
+  .gallery-item,
+  .gallery-item.reverse {
+    /* Pasa de horizontal a vertical */
+    flex-direction: column; 
+    gap: 2rem;
+    margin: 4rem auto;
+  }
+
+  /* Teaser */
+  .teaser-quote { font-size: 1.5rem; }
 }
