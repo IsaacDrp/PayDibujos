@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Necesario para ngClass si usas módulos antiguos
+import { CommonModule } from '@angular/common'; 
 import { RouterModule } from '@angular/router';
 
-// 1. Definimos una interfaz simple para tener autocompletado (opcional pero recomendado)
 interface PortfolioItem {
   src: string;
   alt: string;
-  size?: 'wide' | 'tall' | 'normal'; // '?' significa que es opcional
+  size?: 'wide' | 'tall' | 'normal'; 
 }
 
 @Component({
@@ -18,37 +17,88 @@ interface PortfolioItem {
 })
 export class PortfolioTeaser {
 
-  // 2. Tu lista de imágenes (Simulando una base de datos)
+  // RUTAS SANITIZADAS (Linux Friendly)
   galleryItems: PortfolioItem[] = [
+    // --- FILA 1 ---
     { 
-      src: '/assets/images/princesa-coralina.jpg', 
-      alt: 'Diseño de Personajes', 
-      size: 'normal' 
+      src: '/assets/ilustraciones/princesa-pez /princesitapezturnaround.png', 
+      alt: 'Concept Art - Princesa Pez', 
+      size: 'wide' 
     },
     { 
-      src: '/assets/images/fotografia.jpg', 
-      alt: 'Fotografía Artística', 
-      size: 'tall' // Este será vertical
+      src: 'assets/comics/la-hidra/la-hidra-pagina-02.png', 
+      alt: 'Página de Cómic - La Hidra', 
+      size: 'tall' 
     },
+    
+    // --- FILA 2 ---
     { 
-      src: '/assets/images/cisnes.png', 
-      alt: 'Ilustración Narrativa', 
-      size: 'wide' // Este será ancho
-    },
-    { 
-      src: '/assets/images/temo.png', 
-      alt: 'Diseño de Mascota', 
-      size: 'normal' 
-    },
-    { 
-      src: '/assets/images/muñequitas.png', 
+      src: 'assets/ilustraciones/modelado-3d/munequitas.png', 
       alt: 'Modelado 3D Blender', 
       size: 'normal' 
     },
     { 
-      src: '/assets/images/p&c.png', 
-      alt: 'Cómic y Narrativa Visual', 
+      src: 'assets/ilustraciones/temo/-mascotita.png', 
+      alt: 'Diseño de Mascota - Temo', 
+      size: 'normal' 
+    },
+    { 
+      src: 'assets/ilustraciones/otras-ilustraciones/ajolote.png', 
+      alt: 'Ilustración - Ajolote', 
+      size: 'normal' 
+    },
+
+    // --- FILA 3 ---
+    { 
+      src: 'assets/ilustraciones/ilustracion-cuento/cisnes.png', 
+      alt: 'Ilustración Narrativa - Cisnes', 
       size: 'wide' 
+    },
+    { 
+      src: 'assets/ilustraciones/fotografia /dsc-0085.jpg', 
+      alt: 'Fotografía Artística - Retrato', 
+      size: 'tall' 
+    },
+
+    // --- FILA 4 ---
+    { 
+      src: 'assets/comics/puno-y-corazon/005.png', 
+      alt: 'Página de Cómic - Puño y Corazón', 
+      size: 'tall' 
+    },
+    { 
+      src: 'assets/comics/puno-y-corazon/portada-01.png', 
+      alt: 'Portada - Puño y Corazón', 
+      size: 'wide' 
+    },
+    
+    // --- FILA 5 ---
+    { 
+      src: 'assets/ilustraciones/otras-ilustraciones/franziska.png', 
+      alt: 'Fanart - Franziska', 
+      size: 'normal' 
+    },
+    { 
+      src: 'assets/comics/el-llamado-del-rey-del-hadal/numero-3.png', 
+      alt: 'Página de Cómic - Rey del Hadal', 
+      size: 'normal' 
+    },
+    
+    // --- FILA 6 ---
+    { 
+      src: 'assets/ilustraciones/princesa-pez /amigos-y-familia.png', 
+      alt: 'Concept Art - Personajes Grupales', 
+      size: 'wide' 
+    },
+    { 
+      src: 'assets/ilustraciones/fotografia /dsc-0852.jpg', 
+      alt: 'Fotografía Paisaje/Urbana', 
+      size: 'normal' 
+    },
+    { 
+      src: 'assets/ilustraciones/otras-ilustraciones/maguitos.png', 
+      alt: 'Diseño de Personajes - Maguitos', 
+      size: 'normal' 
     }
   ];
 }

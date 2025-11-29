@@ -13,7 +13,7 @@
 /* Contenedor principal limitado */
 .collage-container {
   position: relative; 
-  max-width: 1900px;
+  max-width: 1200px;
   margin: 0 auto;
   border-radius: 16px;
   overflow: hidden; 
@@ -24,7 +24,7 @@
 .collage-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-auto-rows: 300px; /* Altura base */
+  grid-auto-rows: 200px; /* Altura base */
   gap: 8px; /* Espacio pequeño entre fotos estilo mosaico */
   
   /* ESTADO INICIAL:

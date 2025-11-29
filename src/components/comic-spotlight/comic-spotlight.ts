@@ -37,25 +37,25 @@ export class ComicSpotlight implements OnInit, OnDestroy {
     {
       title: "Puño & Corazón",
       synopsis: "En un mundo donde las emociones otorgan fuerza física, un joven sin sentimientos deberá aprender a luchar.",
-      coverImage: "/assets/images/p&c.png",
+      coverImage: "assets/comics/puno-y-corazon/portada-01.png", // Actualizado
       tags: ['Shonen', 'Acción', 'Estreno'],
       link: '/comics/puno-y-corazon',
       type: 'NEW'
     },
     {
-      title: "Princesa Coralina",
+      title: "El llamado del Rey del hadal",
       synopsis: "Un cuento submarino sobre identidad, monstruos marinos y la belleza de lo desconocido.",
-      coverImage: "/assets/images/princesa-coralina.jpg",
+      coverImage: "assets/comics/el-llamado-del-rey-del-hadal/numero-4.png", // Actualizado
       tags: ['Fantasía', 'Drama'],
       link: '/portafolio/personajes',
       type: 'FEATURED'
     },
     {
-      title: "Crónicas del Cisne",
-      synopsis: "Ilustración narrativa ganadora del concurso nacional de arte digital 2024.",
-      coverImage: "/assets/images/cisnes.png",
-      tags: ['Arte', 'Narrativa'],
-      link: '/portafolio/ilustracion',
+      title: "La Hidra",
+      synopsis: "Una narrativa visual oscura sobre los demonios internos que se multiplican al intentar cortarlos.",
+      coverImage: "assets/comics/la-hidra/la-hidra-pagina-04.png", // Actualizado
+      tags: ['Terror', 'Narrativa'],
+      link: '/comics/la-hidra',
       type: 'POPULAR'
     }
   ];
