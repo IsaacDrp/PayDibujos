@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { trigger, transition, style, animate } from '@angular/animations';
 
@@ -10,16 +10,15 @@ interface ComicSlide {
   coverImage: string;
   tags: string[];
   link: string;
-  type: 'NEW' | 'POPULAR' | 'FEATURED'; // Para poner una etiqueta especial
+  type: 'NEW' | 'POPULAR' | 'FEATURED';
 }
 
 @Component({
   selector: 'app-comic-spotlight',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './comic-spotlight.html',
-  styleUrls: ['./comic-spotlight.css'],
-  // 2. MAGIA DE ANGULAR: Animación de Fade
+  templateUrl: './comic-spotlight.html', // Asegúrate de que coincida con tu nombre de archivo
+  styleUrls: ['./comic-spotlight.css'], // Asegúrate de que coincida con tu nombre de archivo
   animations: [
     trigger('fadeAnimation', [
       transition(':enter', [
@@ -34,12 +33,11 @@ interface ComicSlide {
 })
 export class ComicSpotlight implements OnInit, OnDestroy {
   
-  // 3. Tus diapositivas (Simulando datos de una API)
   slides: ComicSlide[] = [
     {
       title: "Puño & Corazón",
       synopsis: "En un mundo donde las emociones otorgan fuerza física, un joven sin sentimientos deberá aprender a luchar.",
-      coverImage: "/assets/images/p&c.png", // Asegúrate de que esta ruta exista
+      coverImage: "/assets/images/p&c.png",
       tags: ['Shonen', 'Acción', 'Estreno'],
       link: '/comics/puno-y-corazon',
       type: 'NEW'
@@ -65,15 +63,20 @@ export class ComicSpotlight implements OnInit, OnDestroy {
   currentIndex: number = 0;
   autoPlayInterval: any;
 
+  // --- 1. INYECCIÓN DE PLATAFORMA ---
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
   ngOnInit() {
-    this.startAutoPlay();
+    // Solo inicia el carrusel si estamos en el navegador
+    if (isPlatformBrowser(this.platformId)) {
+      this.startAutoPlay();
+    }
   }
 
   ngOnDestroy() {
-    this.stopAutoPlay(); // Muy importante para no dejar procesos memoria
+    this.stopAutoPlay();
   }
 
-  // Getters para facilitar el HTML
   get currentSlide() {
     return this.slides[this.currentIndex];
   }
@@ -81,35 +84,50 @@ export class ComicSpotlight implements OnInit, OnDestroy {
   // --- LÓGICA DE NAVEGACIÓN ---
 
   nextSlide() {
-    this.stopAutoPlay(); // Pausamos si el usuario interactúa
+    this.stopAutoPlay();
     this.currentIndex = (this.currentIndex + 1) % this.slides.length;
-    this.startAutoPlay(); // Reiniciamos el contador
+    // Solo reinicia el autoplay si es navegador (seguridad extra)
+    if (isPlatformBrowser(this.platformId)) {
+      this.startAutoPlay();
+    }
   }
 
   prevSlide() {
     this.stopAutoPlay();
     this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
-    this.startAutoPlay();
+    if (isPlatformBrowser(this.platformId)) {
+      this.startAutoPlay();
+    }
   }
 
   goToSlide(index: number) {
     this.stopAutoPlay();
     this.currentIndex = index;
-    this.startAutoPlay();
+    if (isPlatformBrowser(this.platformId)) {
+      this.startAutoPlay();
+    }
   }
 
-  // --- LÓGICA DEL TEMPORIZADOR ---
+  // --- LÓGICA DEL TEMPORIZADOR (SSR SAFE) ---
   
   startAutoPlay() {
-    // Cambia cada 7 segundos
-    this.autoPlayInterval = setInterval(() => {
-      this.currentIndex = (this.currentIndex + 1) % this.slides.length;
-    }, 7000);
+    // Limpiamos cualquier intervalo previo por seguridad
+    this.stopAutoPlay();
+
+    // --- 2. EL CAMBIO CRÍTICO ---
+    // Verificamos si estamos en el navegador. 
+    // Si estamos en el servidor (SSR), esto se salta y evita el cuelgue.
+    if (isPlatformBrowser(this.platformId)) {
+      this.autoPlayInterval = setInterval(() => {
+        this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+      }, 7000); // 7 segundos
+    }
   }
 
   stopAutoPlay() {
     if (this.autoPlayInterval) {
       clearInterval(this.autoPlayInterval);
+      this.autoPlayInterval = null;
     }
   }
 }
