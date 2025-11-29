@@ -1,0 +1,34 @@
+<section class="portfolio-teaser">
+  <div class="collage-container">
+    
+    <div class="collage-grid">
+      
+      @for (item of galleryItems; track item.src) {
+        
+        <div class="grid-item" 
+             [class.wide]="item.size === 'wide'" 
+             [class.tall]="item.size === 'tall'">
+          
+          <img [src]="item.src" [alt]="item.alt">
+          
+        </div>
+
+      }
+
+    </div>
+
+    <div class="cta-overlay">
+      <div class="cta-card">
+        <h2 class="cta-title">Explora el Universo</h2>
+        <p class="cta-text">
+          Desde la narrativa de cómics y personajes fantásticos hasta modelado 3D. 
+          Descubre la colección completa de mis trabajos.
+        </p>
+        <a routerLink="/portafolio" class="cta-button">
+          Ver Portafolio Completo
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>

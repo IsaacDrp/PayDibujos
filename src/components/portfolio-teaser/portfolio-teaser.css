@@ -1,0 +1,176 @@
+
+/* ============================================== */
+/* ESTILOS DEL TEASER (COLLAGE + DARK CARD)       */
+/* ============================================== */
+
+/* Fondo de la sección: Un blanco "frío" (#f4f6f9) para 
+   mantener la limpieza pero conectar con los tonos fríos del Hero */
+.portfolio-teaser {
+  padding: 4rem 1rem;
+  background-color: #f4f6f9; 
+}
+
+/* Contenedor principal limitado */
+.collage-container {
+  position: relative; 
+  max-width: 1900px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden; 
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08); /* Sombra sutil externa */
+}
+
+/* --- 1. EL GRID (COLLAGE) --- */
+.collage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-rows: 300px; /* Altura base */
+  gap: 8px; /* Espacio pequeño entre fotos estilo mosaico */
+  
+  /* ESTADO INICIAL:
+     Oscurecemos y desaturamos un poco las imágenes para que 
+     la tarjeta central resalte más y no compitan por atención. */
+  filter: brightness(0.65) contrast(1.05) grayscale(20%);
+  transition: filter 0.6s ease;
+}
+
+/* Al pasar el mouse sobre la sección, las fotos "cobran vida" */
+.portfolio-teaser:hover .collage-grid {
+  filter: brightness(0.9) grayscale(0%);
+}
+
+.grid-item {
+  overflow: hidden;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease; /* Zoom lento y suave */
+  }
+
+  /* Zoom individual sutil */
+  &:hover img {
+    transform: scale(1.08);
+  }
+}
+
+/* Modificadores de tamaño para el grid */
+.wide { grid-column: span 2; }
+.tall { grid-row: span 2; }
+
+
+/* --- 2. LA TARJETA CENTRAL (DARK GLASS) --- */
+.cta-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  /* Flexbox para centrar perfectamente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  pointer-events: none; /* Permite clicks en el grid si no tocas la tarjeta */
+  z-index: 10;
+}
+
+.cta-card {
+  pointer-events: auto; /* Reactiva clicks en la tarjeta */
+  
+  /* === ARMONIZACIÓN CON EL HERO === */
+  background-color: rgba(35, 37, 41, 0.85); /* Mismo gris oscuro del Hero */
+  backdrop-filter: blur(12px);               /* Efecto vidrio esmerilado */
+  -webkit-backdrop-filter: blur(12px);       /* Soporte Safari */
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Borde fino brillante */
+  
+  padding: 3.5rem 2.5rem;
+  text-align: center;
+  max-width: 550px;
+  width: 90%;
+  border-radius: 12px;
+  
+  /* Sombra profunda para "flotar" */
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  
+  /* Animación de entrada */
+  opacity: 0;
+  animation: floatUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.3s;
+}
+
+.cta-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem;
+  color: #fcfcfc; /* Blanco puro */
+  margin: 0 0 1rem 0;
+  line-height: 1;
+  letter-spacing: 1px;
+}
+
+.cta-text {
+  font-size: 1.2rem;
+  color: #e0e0e0; /* Gris claro (Off-white) */
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* BOTÓN BLANCO SÓLIDO (Alto Contraste) */
+.cta-button {
+  display: inline-block;
+  background-color: #fcfcfc;
+  color: #20409E; /* Azul Rey para el texto */
+  
+  text-decoration: none;
+  padding: 1rem 3rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    background-color: #ffffff;
+    color: #4778AA; /* Azul más claro al hover */
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.3); /* Resplandor */
+  }
+}
+
+/* --- ANIMACIONES --- */
+@keyframes floatUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* --- RESPONSIVE (MÓVIL) --- */
+@media (max-width: 768px) {
+  .collage-grid {
+    grid-template-columns: 1fr 1fr; /* 2 columnas en vez de auto-fit */
+  }
+  
+  /* En móvil anulamos los tamaños especiales para que no se rompa el grid */
+  .wide, .tall {
+    grid-column: span 1; 
+    grid-row: span 1;
+  }
+  
+  .cta-card {
+    padding: 2rem 1.5rem;
+    backdrop-filter: blur(8px); /* Menos blur en móvil para rendimiento */
+  }
+  
+  .cta-title {
+    font-size: 2.5rem;
+  }
+}

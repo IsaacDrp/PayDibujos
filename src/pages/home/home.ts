@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { Footer } from '../../app/layout/footer/footer';
+import { PortfolioTeaser } from '../../components/portfolio-teaser/portfolio-teaser';
+import { ComicSpotlight } from '../../components/comic-spotlight/comic-spotlight';
 
 @Component({
   selector: 'app-home',
-  imports: [
-],
+  
   templateUrl: './home.html',
   styleUrl: './home.css',
+  imports: [PortfolioTeaser, ComicSpotlight],
 })
 export class Home {
-
 }

@@ -1,0 +1,90 @@
+/* ... MANTÉN TUS ESTILOS DE .comic-hero, .gradient-overlay, .info-card DEL MENSAJE ANTERIOR ... */
+
+/* Añadimos transición suave a la imagen de fondo también */
+.comic-hero {
+  /* ... tus estilos anteriores ... */
+  transition: background-image 0.5s ease-in-out;
+}
+
+/* --- BADGE DE TIPO (NUEVO, POPULAR) --- */
+.badge-type {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  letter-spacing: 1.5px;
+  color: #fff;
+  
+  &.NEW { background-color: #e50914; } /* Rojo Netflix */
+  &.POPULAR { background-color: #20409E; } /* Tu Azul */
+  &.FEATURED { background-color: #8E44AD; } /* Morado */
+}
+
+/* --- CONTROLES DEL SLIDER --- */
+.slider-controls {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  z-index: 10;
+}
+
+.nav-btn {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+
+  &:hover {
+    background: white;
+    color: black;
+    transform: scale(1.1);
+  }
+}
+
+.dots-container {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: rgba(255,255,255,0.6);
+  }
+
+  &.active {
+    background-color: #fff;
+    transform: scale(1.3);
+  }
+}
+
+/* --- AJUSTE MÓVIL --- */
+@media (max-width: 768px) {
+  .slider-controls {
+    bottom: 1rem;
+    right: 50%;
+    transform: translateX(50%); /* Centrado en móvil */
+    width: 100%;
+    justify-content: center;
+  }
+}

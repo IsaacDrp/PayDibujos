@@ -1,0 +1,52 @@
+<section class="comic-hero" 
+         [@fadeAnimation]="currentIndex" 
+         [style.backgroundImage]="'url(' + currentSlide.coverImage + ')'">
+  
+  <div class="gradient-overlay"></div>
+
+  <div class="content-container">
+    
+    <div class="info-card">
+      
+      <span class="badge-type" [ngClass]="currentSlide.type">
+        {{ currentSlide.type === 'NEW' ? 'NUEVO CAPÍTULO' : (currentSlide.type === 'POPULAR' ? 'MÁS LEÍDO' : 'DESTACADO') }}
+      </span>
+
+      <div class="tags-row">
+        @for (tag of currentSlide.tags; track tag) {
+          <span class="comic-tag">{{ tag }}</span>
+        }
+      </div>
+
+      <h2 class="comic-title">{{ currentSlide.title }}</h2>
+      
+      <p class="comic-synopsis">{{ currentSlide.synopsis }}</p>
+
+      <div class="actions-row">
+        <a [routerLink]="currentSlide.link" class="btn-read">
+          <i class="icon-book"></i> Ver Ahora
+        </a>
+        <a [routerLink]="currentSlide.link + '/info'" class="btn-info">
+          Más Detalles
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="slider-controls">
+    
+    <button class="nav-btn prev" (click)="prevSlide()">&#10094;</button>
+    
+    <div class="dots-container">
+      @for (slide of slides; track slide; let i = $index) {
+        <span class="dot" 
+              [class.active]="i === currentIndex"
+              (click)="goToSlide(i)"></span>
+      }
+    </div>
+
+    <button class="nav-btn next" (click)="nextSlide()">&#10095;</button>
+
+  </div>
+</section>

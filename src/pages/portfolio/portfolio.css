@@ -1,0 +1,134 @@
+
+/* ============================================== */
+/* 3. ESTILOS DE LA GALERÍA DINÁMICA              */
+/* ============================================== */
+.gallery-item {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  
+  /* Contenedor centrado */
+  max-width: 1100px;
+  margin: 6rem auto; /* Mucho espacio vertical entre items */
+  padding: 0 1rem;
+}
+
+/* Alterna la dirección de la fila */
+.gallery-item.reverse {
+  flex-direction: row-reverse;
+}
+
+.gallery-item-text,
+.gallery-item-image {
+  flex: 1; /* Ocupan 50% cada uno */
+}
+
+.gallery-item-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Tipografía de la galería */
+.gallery-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #20409E; /* Azul rey de tu paleta */
+}
+
+.gallery-description {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #333;
+  margin: 1.5rem 0;
+}
+
+.gallery-cta-link {
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #20409E;
+  border-bottom: 2px solid #20409E;
+  transition: all 0.3s ease;
+}
+
+.gallery-cta-link:hover {
+  color: #4778AA; /* Azul medio de tu paleta */
+  border-bottom-color: #4778AA;
+}
+
+
+/* ============================================== */
+/* 4. BLOQUE TEASER (SOBRE MÍ)                    */
+/* ============================================== */
+/* (Usamos los estilos que ya te gustaban) */
+.teaser-block {
+  background: linear-gradient(to bottom, #f5eecf, #4a3a6a);
+  padding: 6rem 2rem;
+  margin-top: 6rem;
+  text-align: center;
+}
+
+.teaser-block .content-wrapper,
+.teaser-quote {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.teaser-quote {
+  font-size: 2.25rem; /* ¡Más grande! */
+  font-weight: bold;
+  font-style: italic;
+  color: #232529; /* Gris oscuro */
+  margin-bottom: 2.5rem;
+  line-height: 1.4;
+}
+
+.teaser-cta-link {
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background-color: #fcfcfc;
+  color: #20409E;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  border: 2px solid #20409E;
+}
+
+.teaser-cta-link:hover {
+  background-color: #20409E;
+  color: #fcfcfc;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+
+/* ============================================== */
+/* 5. RESPONSIVE (MÓVIL)                          */
+/* ============================================== */
+@media (max-width: 768px) {
+  /* Hero */
+  .art-block-content {
+    width: 90%;
+    padding: 1.5rem;
+  }
+  .artist-name { font-size: 2rem; }
+  .artist-specialty { font-size: 1.25rem; }
+  .artist-bio { font-size: 1rem; }
+
+  /* Galería (aquí está la magia vertical) */
+  .gallery-item,
+  .gallery-item.reverse {
+    /* Pasa de horizontal a vertical */
+    flex-direction: column; 
+    gap: 2rem;
+    margin: 4rem auto;
+  }
+
+  /* Teaser */
+  .teaser-quote { font-size: 1.5rem; }
+}
