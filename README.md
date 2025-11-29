@@ -1,59 +1,56 @@
-# Paydibujos
+# Itzel Ruiz Pay | Official Portfolio Platform
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.3.
+![Angular](https://img.shields.io/badge/Angular-v20-dd0031?style=for-the-badge&logo=angular)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-v3-6db33f?style=for-the-badge&logo=springboot)
+![Docker](https://img.shields.io/badge/Docker-Enabled-2496ed?style=for-the-badge&logo=docker)
+![Status](https://img.shields.io/badge/Status-In_Development-yellow?style=for-the-badge)
 
-## Development server
+> Plataforma web progresiva (PWA) de alto rendimiento para la exhibición de arte digital, lectura de cómics web y gestión de contenido narrativo.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## Sobre el Proyecto
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Este proyecto es la plataforma oficial de la artista **Itzel Ruiz Pay**. No es solo un portafolio estático; es una aplicación **Fullstack** diseñada para ofrecer una experiencia de lectura inmersiva para cómics web y una galería de arte optimizada.
 
-## Code scaffolding
+El sistema está construido con una arquitectura moderna separando el Frontend (Angular SSR) del Backend (Spring Boot), todo orquestado mediante contenedores para un despliegue ágil en infraestructura propia (Home Lab).
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Características Principales
 
-```bash
-ng generate component component-name
-```
+* **⚡ Angular SSR (Server-Side Rendering):** Renderizado híbrido para máximo rendimiento y SEO optimizado.
+* **Diseño Modular:** Arquitectura basada en componentes Standalone (Hero, Collage Teaser, Comic Spotlight).
+* **Galería Masonry:** Grid dinámico que se adapta a obras verticales y horizontales.
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🛠️ Tech Stack (Synectura Stack)
 
-```bash
-ng generate --help
-```
+Este proyecto demuestra el dominio de ingeniería Fullstack y DevOps:
 
-## Building
+### Frontend
+* **Framework:** Angular 19+ (Standalone Components).
+* **Estilos:** CSS3 Moderno (Variables, Flexbox, Grid) + Angular Animations.
+* **Renderizado:** Angular Universal / SSR (Hydration).
+* **Estrategia de Carga:** Lazy Loading de rutas e imágenes.
 
-To build the project run:
+### Backend (En Desarrollo)
+* **Core:** Java 21 + Spring Boot 3.
+* **Base de Datos:** PostgreSQL.
+* **Seguridad:** Spring Security (JWT).
+* **API:** REST.
 
-```bash
-ng build
-```
+### Infraestructura & DevOps
+* **Servidor:** Ubuntu Server (Self-Hosted en Gateway Ryzen 7 Home Lab).
+* **Contenedores:** Docker & Docker Compose.
+* **Proxy Reverso:** Nginx.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## Arquitectura del Sistema
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```mermaid
+graph TD
+    Client[Browser / Mobile] -->|HTTPS| Nginx[Nginx Proxy]
+    Nginx -->|SSR / Static| Angular[Angular Frontend Container]
+    Nginx -->|API Requests| Spring[Spring Boot API Container]
+    Spring -->|SQL| DB[(PostgreSQL DB)]
+    Angular -->|Hydration| Client
