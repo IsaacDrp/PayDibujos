@@ -4,12 +4,9 @@ services:
     build: .
     restart: always
     ports:
-      # Mapeamos el puerto 4000 del contenedor al 4000 de tu laptop
-      # Luego Nginx en tu laptop hará el proxy reverso
       - "4000:4000"
     environment:
       - NODE_ENV=production
-    # Límites opcionales para proteger tu RAM de 6GB
     deploy:
       resources:
         limits:

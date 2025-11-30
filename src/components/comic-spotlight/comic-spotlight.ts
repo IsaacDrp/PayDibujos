@@ -37,7 +37,7 @@ export class ComicSpotlight implements OnInit, OnDestroy {
     {
       title: "Puño & Corazón",
       synopsis: "En un mundo donde las emociones otorgan fuerza física, un joven sin sentimientos deberá aprender a luchar.",
-      coverImage: "assets/comics/puno-y-corazon/portada-01.png", // Actualizado
+      coverImage: "assets/comics/puno-y-corazon/portada-01.webp", // Actualizado
       tags: ['Shonen', 'Acción', 'Estreno'],
       link: '/comics/puno-y-corazon',
       type: 'NEW'
@@ -45,7 +45,7 @@ export class ComicSpotlight implements OnInit, OnDestroy {
     {
       title: "El llamado del Rey del hadal",
       synopsis: "Un cuento submarino sobre identidad, monstruos marinos y la belleza de lo desconocido.",
-      coverImage: "assets/comics/el-llamado-del-rey-del-hadal/numero-4.png", // Actualizado
+      coverImage: "assets/comics/el-llamado-del-rey-del-hadal/numero-4.webp", // Actualizado
       tags: ['Fantasía', 'Drama'],
       link: '/portafolio/personajes',
       type: 'FEATURED'
@@ -53,7 +53,7 @@ export class ComicSpotlight implements OnInit, OnDestroy {
     {
       title: "La Hidra",
       synopsis: "Una narrativa visual oscura sobre los demonios internos que se multiplican al intentar cortarlos.",
-      coverImage: "assets/comics/la-hidra/la-hidra-pagina-04.png", // Actualizado
+      coverImage: "assets/comics/la-hidra/la-hidra-pagina-04.webp", // Actualizado
       tags: ['Terror', 'Narrativa'],
       link: '/comics/la-hidra',
       type: 'POPULAR'
