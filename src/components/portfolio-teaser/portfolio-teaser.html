@@ -5,11 +5,26 @@
       
       @for (item of galleryItems; track item.src) {
         
+        <!-- 
+           Aquí aplicamos las clases .wide o .tall según lo que
+           definimos en el TS basado en las dimensiones reales 
+        -->
         <div class="grid-item" 
              [class.wide]="item.size === 'wide'" 
              [class.tall]="item.size === 'tall'">
           
-          <img [src]="item.src" [alt]="item.alt">
+          <!-- 
+             CAMBIO CLAVE: Usamos ngSrc + fill 
+             1. ngSrc: Activa la carga perezosa y optimización.
+             2. fill: Obliga a la imagen a llenar el contenedor (que cambia de tamaño).
+             3. sizes: Le dice al navegador qué tamaño descargar aprox.
+          -->
+          <img [ngSrc]="item.src" 
+               [alt]="item.alt"
+               fill
+               sizes="(max-width: 768px) 50vw, 20vw"
+               class="optimized-img"
+          >
           
         </div>
 
@@ -17,6 +32,7 @@
 
     </div>
 
+    <!-- Tu tarjeta CTA  (Sin cambios, es perfecta) -->
     <div class="cta-overlay">
       <div class="cta-card">
         <h2 class="cta-title">Explora el Universo</h2>
