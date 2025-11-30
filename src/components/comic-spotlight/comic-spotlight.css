@@ -1,34 +1,34 @@
 /* =========================================
-   ESTRUCTURA PRINCIPAL (HERO)
+   HERO & FONDO
    ========================================= */
 .comic-hero {
   position: relative;
   width: 100%;
-  min-height: 80vh; /* Altura considerable para impacto visual */
   
-  /* Configuración de fondo */
-  background-attachment: fixed; /* Efecto Parallax */
+  /* ALTURA BASE (DESKTOP GRANDE) */
+  min-height: 80vh; 
+  
+  /* Desktop: Parallax y alineación izquierda */
+  background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   
-  /* Flexbox para alinear contenido */
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding: 4rem 1rem;
 
-  /* Transición suave al cambiar de imagen */
   transition: background-image 0.8s ease-in-out;
 }
 
-/* Capa oscura degradada sobre la imagen */
 .gradient-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  /* Desktop: Sombra lateral para leer texto a la izquierda */
   background: linear-gradient(
     to right, 
     rgba(15, 15, 20, 0.95) 0%, 
@@ -40,19 +40,19 @@
 
 .content-container {
   position: relative;
-  z-index: 2; /* Encima del overlay */
+  z-index: 2;
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
   padding: 0 2rem;
+  box-sizing: border-box;
 }
 
 /* =========================================
-   TARJETA DE INFORMACIÓN
+   INFO CARD & TIPOGRAFÍA
    ========================================= */
 .info-card {
   max-width: 600px;
-  /* Animación de entrada simple */
   animation: slideIn 1s ease-out;
 }
 
@@ -63,6 +63,9 @@
   color: #fff;
   margin: 1rem 0;
   text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  
+  /* Transición suave para cambio de tamaño */
+  transition: font-size 0.3s ease;
 }
 
 .comic-synopsis {
@@ -73,9 +76,12 @@
   text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
-/* TAGS */
+/* =========================================
+   TAGS & BADGES
+   ========================================= */
 .tags-row {
   display: flex;
+  flex-wrap: wrap; /* Evita desbordamiento en pantallas angostas */
   gap: 10px;
   margin-bottom: 1rem;
 }
@@ -92,7 +98,6 @@
   letter-spacing: 1px;
 }
 
-/* BADGES (Etiquetas de tipo) */
 .badge-type {
   display: inline-block;
   font-size: 0.9rem;
@@ -104,30 +109,19 @@
   color: #fff;
 }
 
-/* Variantes de Badge (CSS Plano) */
-.badge-type.NEW {
-  background-color: #e50914; /* Rojo */
-}
-
-.badge-type.POPULAR {
-  background-color: #20409E; /* Azul */
-}
-
-.badge-type.FEATURED {
-  background-color: #8E44AD; /* Morado */
-}
+.badge-type.NEW { background-color: #e50914; }
+.badge-type.POPULAR { background-color: #20409E; }
+.badge-type.FEATURED { background-color: #8E44AD; }
 
 /* =========================================
-   BOTONES DE ACCIÓN
+   BOTONES
    ========================================= */
 .actions-row {
   display: flex;
   gap: 1rem;
 }
 
-.btn-read {
-  background-color: #fcfcfc;
-  color: #000;
+.btn-read, .btn-info {
   padding: 1rem 2.5rem;
   border-radius: 4px;
   font-weight: bold;
@@ -136,9 +130,18 @@
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
+  cursor: pointer;
+  
+  /* FIX CRÍTICO: Asegura que el padding no se sume al ancho total */
+  box-sizing: border-box; 
 }
 
+.btn-read {
+  background-color: #fcfcfc;
+  color: #000;
+}
 .btn-read:hover {
   background-color: #e6e6e6;
   transform: scale(1.05);
@@ -147,29 +150,27 @@
 .btn-info {
   background-color: rgba(109, 109, 110, 0.6);
   color: #fff;
-  padding: 1rem 2.5rem;
-  border-radius: 4px;
-  font-weight: bold;
-  font-size: 1.2rem;
-  text-decoration: none;
   backdrop-filter: blur(5px);
-  transition: all 0.2s ease;
 }
-
 .btn-info:hover {
   background-color: rgba(109, 109, 110, 0.9);
   transform: scale(1.05);
 }
 
 /* =========================================
-   CONTROLES DEL SLIDER (CSS STANDARD)
+   CONTROLES (FLECHAS)
    ========================================= */
 .slider-controls {
   position: absolute;
   bottom: 2rem;
-  right: 2rem;
+  
+  /* CENTRADO GLOBAL (Desktop, Tablet, Mobile) */
+  left: 50%;
+  transform: translateX(-50%);
+  
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1.5rem;
   z-index: 10;
 }
@@ -188,7 +189,6 @@
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  padding-bottom: 4px; /* Ajuste visual para centrar flecha */
 }
 
 .nav-btn:hover {
@@ -212,42 +212,75 @@
   transition: all 0.3s ease;
 }
 
-.dot:hover {
-  background-color: rgba(255,255,255,0.6);
-}
+.dot:hover { background-color: rgba(255,255,255,0.6); }
+.dot.active { background-color: #fff; transform: scale(1.3); }
 
-.dot.active {
-  background-color: #fff;
-  transform: scale(1.3);
-}
-
-/* Animación slideIn para el texto */
 @keyframes slideIn {
   from { opacity: 0; transform: translateX(-30px); }
   to { opacity: 1; transform: translateX(0); }
 }
 
 /* =========================================
-   RESPONSIVE (MÓVIL)
+   RESPONSIVE (MEDIA QUERIES)
    ========================================= */
-@media (max-width: 768px) {
+
+/* --- TABLETS / LAPTOPS PEQUEÑOS (1024px) --- */
+@media (max-width: 1024px) {
   .comic-hero {
-    /* En móvil quitamos parallax porque suele dar problemas de rendimiento */
-    background-attachment: scroll; 
-    background-position: top center;
-    align-items: flex-end; /* Texto abajo */
-    padding-bottom: 5rem; /* Espacio para controles */
+    /* Reducción proporcional de altura para pantallas medianas */
+    min-height: 60vh; 
   }
   
-  .gradient-overlay {
-    /* Degradado vertical en móvil para que el texto abajo se lea bien */
-    background: linear-gradient(to top, rgba(15,15,20,1) 10%, rgba(15,15,20,0.4) 60%, rgba(15,15,20,0) 100%);
-  }
-
   .comic-title {
-    font-size: 3.5rem;
+    /* Ajuste de título para que no se vea gigante */
+    font-size: 4rem; 
+  }
+}
+
+/* --- MÓVILES (768px) --- */
+@media (max-width: 768px) {
+  
+  /* Ajuste de Hero para Móvil */
+  .comic-hero {
+    background-attachment: scroll; /* Fix rendimiento iOS */
+    align-items: flex-end; /* Texto abajo */
+    padding-top: 6rem; /* Espacio header */
+    padding-bottom: 5rem; /* Espacio controles */
+    
+    /* En móvil vertical solemos querer pantalla completa, 
+       pero puedes bajarlo a 85dvh si quieres ver algo de contenido abajo */
+    min-height: 100dvh; 
   }
 
+  /* Ajuste de degradado para leer texto abajo */
+  .gradient-overlay {
+    background: linear-gradient(
+      to top, 
+      rgba(15,15,20,1) 10%, 
+      rgba(15,15,20,0.6) 50%, 
+      rgba(15,15,20,0) 100%
+    );
+  }
+
+  .content-container {
+    padding: 0 1.5rem;
+  }
+
+  /* Tipografía reducida */
+  .comic-title {
+    font-size: 3rem;
+  }
+  
+  .comic-synopsis {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    display: -webkit-box; /* Truncar texto si es muy largo en móvil */
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Botones apilados */
   .actions-row {
     flex-direction: column;
     width: 100%;
@@ -255,15 +288,15 @@
 
   .btn-read, .btn-info {
     width: 100%;
-    justify-content: center;
+    
+    /* CORRECCIÓN VERTICAL: */
+    flex-shrink: 0; 
+    height: auto;   
+    min-height: 50px; 
   }
 
-
-}
+  /* Controles (Solo ajustamos bottom, el centrado ya es global) */
   .slider-controls {
     bottom: 1.5rem;
-    right: 50%;
-    transform: translateX(50%); /* Centrado absoluto horizontal */
-    width: 100%;
-    justify-content: center;
   }
+}

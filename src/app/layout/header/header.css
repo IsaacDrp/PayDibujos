@@ -1,77 +1,143 @@
-/* src/app/layout/header/header.css */
-
+/* ============================================== */
+/* 1. CONTENEDOR PRINCIPAL (HEADER)              */
+/* ============================================== */
 .main-header {
   display: flex;
   justify-content: space-between;
   
-  /* 1. ALINEACIÓN "ARRIBA" */
-  align-items: flex-start; 
+  align-items: center; 
   
-  /* Añadimos padding arriba y abajo para que no se pegue */
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-  padding-left: 2rem;
-  padding-right: 2rem; 
-
-  /* Esto es clave para que el padding funcione con min-height */
+  padding: 1rem 2rem;
+  
+  min-height: auto; 
+  
+  background-image: linear-gradient(to bottom, #20409E, transparent);
   box-sizing: border-box; 
   
-  min-height: 100px; 
-  background-image: linear-gradient(to bottom, #20409E, transparent);
-  
-  /* === FIN DE CAMBIOS === */
-
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
+
+  transition: all 0.3s ease;
 }
 
-/* 2. ESTILOS DEL NUEVO LOGO CON TÍTULO */
+/* ============================================== */
+/* 2. LOGO Y TÍTULO (GRUPO)                       */
+/* ============================================== */
 .logo-group {
   display: flex;
-  /* Alineamos los elementos al fondo */
-  align-items: flex-end; 
-  gap: 0.5rem; /* Espacio entre la imagen y el texto */
-  text-decoration: none; /* Por si lo quieres hacer un link */
+  align-items: center; 
+  gap: 0.75rem; 
+  text-decoration: none; 
 }
 
 .logo-image {
-  height: 110px; /* O el tamaño que tenías */
-  border-radius: 2.5rem;
+  height: 75px; 
+  width: auto; 
+  
+  border-radius: 50%; 
+  object-fit: cover;
+  
+  
+  transition: height 0.3s ease;
 }
 
 .logo-title {
   font-family: "Bebas Neue", sans-serif;
-  font-size: 3.25rem;
+  
+  
+  font-size: 2.5rem; 
+  
   font-weight: bold;
   color: #fcfcfc; 
-  padding-bottom: 5px; 
+  margin: 0;
+  line-height: 1;
+  
+  transition: font-size 0.3s ease;
 }
 
-
-/* ... (Estilos de .main-nav y .main-nav ul) ... */
+/* ============================================== */
+/* 3. NAVEGACIÓN                                  */
+/* ============================================== */
 .main-nav ul {
   margin: 0;
   padding: 0;
   list-style: none;
   display: flex;
+  align-items: center;
 }
+
 .main-nav li {
-  margin-left: 1.5rem;
+  margin-left: 2rem; 
 }
 
-
-/* 3. CAMBIO DE HOVER */
 .main-nav a {
-  color: #fcfcfc; /* Color base blanco */
+  color: #fcfcfc; 
   text-decoration: none;
   font-family: "Bebas Neue", sans-serif;
-  font-weight: bold;
-  transition: color 0.3s ease;
+  font-size: 1.25rem; 
+  letter-spacing: 1px;
+  transition: color 0.3s ease, transform 0.2s;
 }
 
 .main-nav a:hover {
   color: #ffffff;
+  text-shadow: 0 0 10px rgba(255,255,255,0.5); 
+}
+
+
+/* ============================================== */
+/* 4. RESPONSIVE (MEDIA QUERIES)                  */
+/* ============================================== */
+
+/* --- TABLETS (Hasta 1024px) --- */
+@media (max-width: 1024px) {
+  .main-header {
+    padding: 0.8rem 1.5rem; 
+  }
+  
+  .logo-image {
+    height: 60px; 
+  }
+
+  .logo-title {
+    font-size: 2rem; 
+  }
+}
+
+/* --- MÓVILES (Hasta 768px) --- */
+@media (max-width: 768px) {
+  .main-header {
+    padding: 0.5rem 1rem; 
+    background-color: #20409E; 
+    background-image: none;
+  }
+
+  .logo-image {
+    height: 45px; 
+  }
+
+  .logo-title {
+    font-size: 1.5rem; 
+  }
+
+  .logo-group {
+    gap: 0.5rem;
+  }
+
+  .main-nav li {
+    margin-left: 1rem;
+  }
+
+  .main-nav a {
+    font-size: 1rem; 
+  }
+}
+
+@media (max-width: 380px) {
+  .logo-title {
+    display: none; 
+  }
 }
