@@ -1,13 +1,7 @@
-services:
-  synectura-web:
-    container_name: synectura_frontend
-    build: .
-    restart: always
-    ports:
-      - "4000:4000"
-    environment:
-      - NODE_ENV=production
-    deploy:
-      resources:
-        limits:
-          memory: 512M
+synectura-web:
+    container_name: paydibujos_frontend
+    # CAMBIO: Ahora apunta a la carpeta frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    # ... el resto sigue igual
