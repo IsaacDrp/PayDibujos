@@ -28,7 +28,7 @@ public class Page {
   @Column(name = "imagen_path", nullable = false)
   private String imagePath;
 
-  // --- Relaciones ---
+  // --- Relations---
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "chapter_id", nullable = false)
