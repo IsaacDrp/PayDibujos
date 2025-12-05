@@ -1,0 +1,21 @@
+<div class="dashboard-container">
+  <div class="welcome-card">
+    <div class="icon">👋</div>
+    
+    <h1>Hola, {{ currentUser() || 'Admin' }}</h1>
+    
+    <p class="status-text">
+      Has ingresado correctamente al <strong>Sistema Synectura</strong>.
+      <br>
+      Desde aquí gestionarás el portafolio y los cómics.
+    </p>
+
+    <div class="actions">
+      <button class="btn-primary">Ver Cómics (Próximamente)</button>
+      
+      <button (click)="logout()" class="btn-secondary">
+        Cerrar Sesión
+      </button>
+    </div>
+  </div>
+</div>
