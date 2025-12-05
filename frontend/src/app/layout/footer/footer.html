@@ -36,4 +36,14 @@
       Desarrollado por <a href="https://synectura.com" target="_blank" class="synectura-link">Synectura</a>
     </div>
   </div>
+  <div class="backend-status">
+  @if (statusService.status() === 'CHECKING') {
+    <span class="status-dot checking"></span> Conectando...
+  } @else if (statusService.status() === 'ONLINE') {
+    <span class="status-dot online"></span> 
+    Synectura Systems v{{ statusService.systemVersion() }}
+  } @else {
+    <span class="status-dot offline"></span> Sin conexión
+  }
+</div>
 </footer>

@@ -144,3 +144,24 @@
     text-align: center;
   }
 }
+.backend-status {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #666;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  font-family: monospace;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.status-dot.checking { background-color: #f1c40f; } /* Amarillo */
+.status-dot.online { background-color: #2ecc71; box-shadow: 0 0 5px #2ecc71; } /* Verde Neon */
+.status-dot.offline { background-color: #e74c3c; } /* Rojo */
